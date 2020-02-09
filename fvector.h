@@ -31,11 +31,11 @@ class vector {
     ++end_;
   }
 
-  value_type& operator[](size_type index) { 
+  value_type& operator[](size_type index) {
     if (index > std::distance(begin(), end())) {
       throw std::out_of_range("fvector out of range");
     }
-    return data_[index]; 
+    return data_[index];
   }
 
   iterator begin() noexcept {
@@ -54,8 +54,8 @@ class vector {
     return end_;
   }
 
-  std::ostream& operator<< (std::ostream& out) const {
-    for(const auto& value : *this) {
+  friend std::ostream& operator<<(std::ostream& out, const vector<T>& v) {
+    for(const auto& value : v) {
       out << value << " ";
     }
     return out;
